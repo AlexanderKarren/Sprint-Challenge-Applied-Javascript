@@ -56,12 +56,16 @@ rightButton.addEventListener("click", function(event) {
   allImages.forEach(function(image, index) {
     console.log(image);
     if (index === (currentImage+1)) {
-      image.style.display = "flex";
-      allImages[index - 1].style.display = "none";
+      image.style.opacity = 0;
+      TweenLite.to(image, {opacity:1, display:"flex", delay:.1});
+      TweenLite.to(allImages[index-1], {opacity:0, display:"none", duration:.1});
     }
     else if ((currentImage + 1) === (allImages.length)) {
-      allImages[0].style.display = "flex";
-      allImages[currentImage].style.display = "none";
+      // allImages[0].style.display = "flex";
+      // allImages[currentImage].style.display = "none";
+      allImages[0].style.opacity = 0;
+      TweenLite.to(allImages[0], {opacity:1, display:"flex", delay:.1});
+      TweenLite.to(allImages[currentImage], {opacity:0, display:"none", duration:.1});
       console.log(currentImage);
       maxReached = true;
     }
@@ -82,12 +86,14 @@ leftButton.addEventListener("click", function(event) {
   allImages.forEach(function(image, index) {
     console.log(image);
     if (index === (currentImage-1)) {
-      image.style.display = "flex";
-      allImages[index + 1].style.display = "none";
+      image.style.opacity = 0;
+      TweenLite.to(image, {opacity:1, display:"flex", delay:.1});
+      TweenLite.to(allImages[index + 1], {opacity:0, display:"none", duration:.1});
     }
     else if ((currentImage - 1) === -1) {
-      allImages[allImages.length - 1].style.display = "flex";
-      allImages[currentImage].style.display = "none";
+      allImages[allImages.length - 1].style.opacity = 0;
+      TweenLite.to(allImages[allImages.length - 1], {opacity:1, display:"flex", delay:.1});
+      TweenLite.to(allImages[currentImage], {opacity:0, display:"none", duration:.1});
       maxReached = true;
     }
     if (index === (allImages.length - 1)) {
