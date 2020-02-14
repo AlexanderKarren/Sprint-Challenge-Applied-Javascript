@@ -11,10 +11,13 @@
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
 .then(response => {
     console.log(response);
-    response.data.topics.forEach(function(topic) {
+    response.data.topics.forEach(function(topic, index) {
         const newTopic = document.createElement("div");
         newTopic.classList.add("tab");
-        newTopic.textContent = topic;
+        const link = document.createElement("a");
+        link.href = `#${topic}`;
+        link.textContent = topic;
+        newTopic.appendChild(link);
         document.querySelector(".topics").appendChild(newTopic);
     });
 })
